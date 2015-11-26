@@ -2,4 +2,4 @@
 /**
  * The MYSQL connection
  */
-$db = new mysqli('host', 'user', 'pw', 'matterport');
+$db = new mysqli('host', 'user', 'pw', 'db_name');
