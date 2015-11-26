@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script src="javascript/jquery.js"></script>
+    <script src="javascript/jquery.magnific-popup.js"></script>
+    <script src="javascript/properties.js"></script>
+    <script src="javascript/bootstrap/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-theme.css" />
+    <meta charset="UTF-8">
+    <title>Matterport</title>
+</head>
+<body>
+
+<iframe id="matterPortIframe" src="" frameborder="0"></iframe>
+
+<div class="navbar navbar-default" id="navbar">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" id="hamburgerBtn" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <button id="agentLinkBtn" class="leftButton btn btn-default btn-md" onclick="void(0)"></button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="nav navbar-nav" id="buttonContainer">
+                <button id="bookInspectionBtn" class="rightButton btn btn-default btn-md" onclick="void(0)">Book Inspection</button>
+
+                <button id="realEstateBtn" class="rightButton btn btn-default btn-md" onclick="void(0)">realestate.com.au</button>
+
+                <button id="googleMapsBtn" class="rightButton btn btn-default btn-md" onclick="void(0)">Google Maps</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div id="bookInspectionDiv" class="inspection-popup mfp-hide">
+
+    <div id="agentPhotoDiv">
+        <img id="agentPhoto" src="" alt="" />
+    </div>
+
+    <div id="agentDetailsDiv">
+        <h3 id="agentName"></h3>
+        <p id="agentPosition"></p>
+        <hr />
+        <p id="desc"></p>
+        <a href="" id="agentContact"></a>
+	</div>
+
+</div>
+
+<script>
+    $(document).ready(function() {
+
+        initialisePage();
+
+        $("#agentLinkBtn").click(function() {
+            var urls = getURLS();
+            window.open(urls.agent_website);
+        });
+
+        $("#googleMapsBtn").click(function() {
+            var urls = getURLS();
+            window.open(urls.googlemaps_link);
+        });
+
+        $("#realEstateBtn").click(function() {
+            var urls = getURLS();
+            window.open(urls.realestate_link);
+        });
+
+        $("#bookInspectionBtn").magnificPopup({
+            items : {
+                src: '#bookInspectionDiv',
+                type: 'inline'
+            }
+        });
+
+        $("#showMenu").click(function() {
+
+        });
+
+    });
+</script>
+
+</body>
+</html>

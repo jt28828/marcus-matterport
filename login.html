@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script src="javascript/jquery.js"></script>
+    <script src="javascript/bootstrap/bootstrap.js"></script>
+    <script src="javascript/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/sweetalert.css" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-theme.css" />
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+<div class="col-md-4 col-md-offset-4 col-xs-10 col-xs-offset-1">
+
+    <h1>Login</h1>
+
+    <br />
+    <br />
+
+    <div class="row col-xs-12">
+
+        <form id="loginForm" action="">
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="text" name="email" id="email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" name="password" id="password">
+            </div>
+
+        </form>
+
+        <button id="loginBtn" class="btn btn-default btn-block" onclick="void(0)">Login</button>
+
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function() {
+
+        $("#loginBtn").click(function() {
+            event.preventDefault();
+
+            $.ajax({
+                url: "php/login.php",
+                type: "POST",
+                data: {
+                    email: $('#email').val(),
+                    password: $('#password').val()
+                },
+                success: function (success) {
+
+                    if (parseInt(success)) {
+                        document.location.href = 'dashboard.php'
+                    } else {
+                        swal("Error", "Incorrect username or password", "error");
+                    }
+
+                },
+                error: function () {
+                    swal("Error", "Error checking your details, please try again", "error");
+                }
+            });
+
+        });
+	});
+</script>
+
+</body>
+</html>
